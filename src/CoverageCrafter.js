@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 
-export default function CoverageCrafter() {
+export default function CoverageCrafter(props) {
   let match = useRouteMatch();
 
   return (
@@ -18,15 +18,19 @@ export default function CoverageCrafter() {
 
       <ul>
         <li>
-          <Link to={`${match.url}/standard-forms`}>Standard Forms</Link>
+          <Link to={`${match.url}/${props.dealID}/standard-forms`}>
+            Standard Forms
+          </Link>
         </li>
         <li>
-          <Link to={`${match.url}/manuscripts`}>Manuscripts</Link>
+          <Link to={`${match.url}/${props.dealID}/manuscripts`}>
+            Manuscripts
+          </Link>
         </li>
       </ul>
 
       <Switch>
-        <Route path={`${match.path}/:topicId?lob=wc`}>
+        <Route path={`${match.path}/${props.dealID}?lob=wc`}>
           <Topic />
         </Route>
         <Route path={match.path}>

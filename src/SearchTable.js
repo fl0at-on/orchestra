@@ -67,21 +67,27 @@ const AccountRow = props => {
       <TableCell>{props.name}</TableCell>
       <TableCell>{props.effectiveDate}</TableCell>
       <TableCell>
-        <NavLink style={{ textDecoration: "none" }} to="/datacenter">
+        <NavLink
+          style={{ textDecoration: "none" }}
+          to={`/datacenter?dealID=${props.dealID}`}
+        >
           <Button variant="outlined" color="primary">
             Data Center
           </Button>
         </NavLink>
       </TableCell>
       <TableCell>
-        <NavLink style={{ textDecoration: "none" }} to="/coveragecrafter">
+        <NavLink
+          style={{ textDecoration: "none" }}
+          to={`/coveragecrafter?${props.dealID}`}
+        >
           <Button variant="outlined" color="primary">
             Coverage
           </Button>
         </NavLink>
       </TableCell>
       <TableCell>
-        <Button variant="outlined" color="primary">
+        <Button variant="outlined" color="primary" disabled>
           The Hub
         </Button>
       </TableCell>
