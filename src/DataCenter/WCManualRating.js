@@ -67,8 +67,9 @@ const ReturnHOTTable = props => {
       columnSorting={true}
       minSpareRows={1}
       fixedRowsTop={1}
-      width="400"
+      width="100%"
       height="300"
+      manualColumnResize={true}
       licenseKey="non-commercial-and-evaluation"
       columnSummary={function() {
         var configArray = [];
