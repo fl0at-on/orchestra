@@ -1,11 +1,14 @@
 import React from "react";
+import { useParams } from "react-router";
 import { HotTable, HotColumn } from "@handsontable/react";
 //import Handsontable from "handsontable";
 import "handsontable/dist/handsontable.full.css";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Paper from "@material-ui/core/Paper";
-import { useParams } from "react-router";
+
 //import SaveIcon from "@material-ui/icons/Save";
 
 const sampleWCdata = [
@@ -33,14 +36,26 @@ const sampleWCdata = [
   }
 ];
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    // ...theme.typography.button,
+    // backgroundColor: theme.palette.background.paper,
+    // padding: theme.spacing(1),
+    maxWidth: 500,
+    width: "100%"
+  }
+}));
+
 export default function WCManualRating() {
-  console.log(useParams());
+  const classes = useStyles();
   const params = useParams();
 
   return (
-    <Paper>
+    <Paper classNames={classes.root}>
       <Paper>
-        <h1>WC Manual Rating</h1>
+        <Typography variant="h4" gutterBottom>
+          WC Manual Rating
+        </Typography>
         <ButtonGroup
           color="primary"
           variant="contained"

@@ -10,11 +10,12 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
-    width: "75%",
+    width: 800,
     marginLeft: "auto",
     marginRight: "auto"
   }
@@ -25,8 +26,10 @@ export default function SearchTable(props) {
 
   const classes = useStyles();
   return (
-    <Paper className="App">
-      <h1>Account Selection</h1>
+    <Paper className={classes.root}>
+      <Typography variant="h2" gutterBottom>
+        Account Selection
+      </Typography>
       <TableContainer component={Paper}>
         <Table
           className={classes.table}

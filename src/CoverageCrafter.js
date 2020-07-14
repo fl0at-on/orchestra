@@ -7,32 +7,45 @@ import {
   useParams
 } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    // ...theme.typography.button,
+    // backgroundColor: theme.palette.background.paper,
+    // padding: theme.spacing(1),
+    maxWidth: 1200,
+    width: "100%"
+  }
+}));
 
 export default function CoverageCrafter(props) {
   let match = useRouteMatch();
+  const classes = useStyles();
 
   return (
-    <Paper>
-      <h2>Coverage Crafter</h2>
-      <h3>Policy Selection</h3>
+    <Paper classNames={classes.root}>
+      <Typography variant="h2">Coverage Crafter </Typography>
+      <Typography variant="h3" gutterBottom>
+        Policy Selection{" "}
+      </Typography>
+      <Typography variant="h5">
+        <Link to={`${match.url}/standard-forms`}>Standard Forms</Link>
+      </Typography>
 
-      <ul>
-        <li>
-          <Link to={`${match.url}/standard-forms`}>Standard Forms</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/manuscripts`}>Manuscripts</Link>
-        </li>
-      </ul>
+      <Typography variant="h5">
+        <Link to={`${match.url}/manuscripts`}>Manuscripts</Link>
+      </Typography>
 
       <Switch>
         <Route path={`${match.path}?lob=wc`}>
           <Topic />
         </Route>
         <Route path={match.path}>
-          <h3>
+          <Typography variant="h6">
             No account found. Please select a specific account to view first.
-          </h3>
+          </Typography>
         </Route>
       </Switch>
     </Paper>

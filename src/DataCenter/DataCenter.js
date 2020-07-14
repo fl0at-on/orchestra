@@ -10,16 +10,36 @@ import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 import WCManualRating from "./WCManualRating.js";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    // ...theme.typography.button,
+    // backgroundColor: theme.palette.background.paper,
+    // padding: theme.spacing(1),
+    //maxWidth: 1200,
+    width: "100%"
+  }
+}));
 
 export default function DataCenter() {
   //const params = useParams();
+  const classes = useStyles();
   let match = useRouteMatch();
   return (
-    <Paper style={{ marginLeft: "auto", marginRight: "auto" }}>
-      <h2>Data Center</h2>
+    <Paper
+      className={classes.root}
+      style={{ marginLeft: "auto", marginRight: "auto" }}
+    >
+      <Typography variant="h2" gutterBottom>
+        Data Center
+      </Typography>
       <Card>
-        <h3>Workers' Compensation</h3>
+        <Typography variant="h4" gutterBottom>
+          Workers' Compensation
+        </Typography>
         <ButtonGroup
           color="default"
           variant="contained"
@@ -35,7 +55,9 @@ export default function DataCenter() {
         </ButtonGroup>
       </Card>
       <Card>
-        <h3>General Liability</h3>
+        <Typography variant="h4" gutterBottom>
+          General Liability
+        </Typography>
         <ButtonGroup
           color="default"
           variant="contained"
@@ -52,7 +74,9 @@ export default function DataCenter() {
         </ButtonGroup>
       </Card>
       <Card>
-        <h3>Automobile Liability</h3>
+        <Typography variant="h4" gutterBottom>
+          Automobile Liability
+        </Typography>
         <ButtonGroup
           color="default"
           variant="contained"
@@ -76,7 +100,7 @@ export default function DataCenter() {
           <Topic />
         </Route>
         <Route path={match.path}>
-          <h3>No account found. Please select a specifc account to view.</h3>
+          <h4>No account found. Please select a specific account to view.</h4>
         </Route>
       </Switch>
     </Paper>
@@ -84,5 +108,5 @@ export default function DataCenter() {
 }
 function Topic() {
   let { topicId } = useParams();
-  return <h3>Requested topic ID: {topicId}</h3>;
+  return <h4>Requested topic ID: {topicId}</h4>;
 }
