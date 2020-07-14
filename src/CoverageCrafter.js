@@ -18,19 +18,15 @@ export default function CoverageCrafter(props) {
 
       <ul>
         <li>
-          <Link to={`${match.url}/${props.dealID}/standard-forms`}>
-            Standard Forms
-          </Link>
+          <Link to={`${match.url}/standard-forms`}>Standard Forms</Link>
         </li>
         <li>
-          <Link to={`${match.url}/${props.dealID}/manuscripts`}>
-            Manuscripts
-          </Link>
+          <Link to={`${match.url}/manuscripts`}>Manuscripts</Link>
         </li>
       </ul>
 
       <Switch>
-        <Route path={`${match.path}/${props.dealID}?lob=wc`}>
+        <Route path={`${match.path}?lob=wc`}>
           <Topic />
         </Route>
         <Route path={match.path}>

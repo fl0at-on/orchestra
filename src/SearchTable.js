@@ -11,11 +11,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-const AccountNames = [
-  { name: "The Kroger Co.", dealID: "49656", effectiveDate: "1/25/2020" },
-  { name: "ABC Company", dealID: "99999", effectiveDate: "6/1/2020" }
-];
-
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -25,7 +20,9 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SearchTable() {
+export default function SearchTable(props) {
+  const AccountNames = props.props;
+
   const classes = useStyles();
   return (
     <Paper className="App">
@@ -58,18 +55,18 @@ export default function SearchTable() {
 }
 
 const AccountRow = props => {
-  props = props.props;
+  const { name, effectiveDate, dealID } = props.props;
   return (
     <TableRow className="account-table-row" hover>
       <TableCell component="th" scope="row">
-        {props.dealID}
+        {dealID}
       </TableCell>
-      <TableCell>{props.name}</TableCell>
-      <TableCell>{props.effectiveDate}</TableCell>
+      <TableCell>{name}</TableCell>
+      <TableCell>{effectiveDate}</TableCell>
       <TableCell>
         <NavLink
           style={{ textDecoration: "none" }}
-          to={`/datacenter?dealID=${props.dealID}`}
+          to={`/datacenter/${dealID}`}
         >
           <Button variant="outlined" color="primary">
             Data Center
@@ -79,7 +76,7 @@ const AccountRow = props => {
       <TableCell>
         <NavLink
           style={{ textDecoration: "none" }}
-          to={`/coveragecrafter?${props.dealID}`}
+          to={`/coveragecrafter/${dealID}`}
         >
           <Button variant="outlined" color="primary">
             Coverage

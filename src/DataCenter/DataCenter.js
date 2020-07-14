@@ -13,6 +13,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import WCManualRating from "./WCManualRating.js";
 
 export default function DataCenter() {
+  //const params = useParams();
   let match = useRouteMatch();
   return (
     <Paper style={{ marginLeft: "auto", marginRight: "auto" }}>

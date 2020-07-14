@@ -5,18 +5,38 @@ import "handsontable/dist/handsontable.full.css";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Paper from "@material-ui/core/Paper";
+import { useParams } from "react-router";
 //import SaveIcon from "@material-ui/icons/Save";
 
 const sampleWCdata = [
-  [],
-  ["AL", "ABC Company", 8810, 100000],
-  ["AL", "ABC Company", 8742, 250000],
-  ["AL", "ABC, LLC", 7380, 350000],
-  ["AK", "ABC Company", 8810, 50000],
-  ["OH", "ABC Company", 9139, 3000]
+  {
+    dealID: "49656",
+    rating: [
+      [],
+      ["AL", "Kroger Company", "8810", 100000],
+      ["AL", "Kroger Company", "8742", 250000],
+      ["AL", "Kroger, LLC", "7380", 350000],
+      ["AK", "Kroger Company", "8810", 50000],
+      ["OH", "Kroger Company", "9139", 3000]
+    ]
+  },
+  {
+    dealID: "99999",
+    rating: [
+      [],
+      ["CT", "ABC Company", "8810", 10000],
+      ["CT", "ABC Company", "8742", 44000],
+      ["MD", "ABC, LLC", "7380", 77000],
+      ["MD", "ABC Company", "8810", 60000],
+      ["WA", "ABC Company", "9139", 30000]
+    ]
+  }
 ];
 
 export default function WCManualRating() {
+  console.log(useParams());
+  const params = useParams();
+
   return (
     <Paper>
       <Paper>
@@ -40,7 +60,7 @@ export default function WCManualRating() {
           Compare
         </Button>
         <div id="hot-app" style={{ marginTop: "10px" }}>
-          <ReturnHOTTable />
+          <ReturnHOTTable dealID={params.dealID} />
         </div>
       </Paper>
     </Paper>
@@ -59,9 +79,13 @@ const ReturnHOTTable = props => {
       }
     }
   };
+  const WCRatingData = sampleWCdata.filter(
+    item => item.dealID === props.dealID
+  )[0].rating;
+
   return (
     <HotTable
-      data={sampleWCdata}
+      data={WCRatingData}
       colHeaders={true}
       rowHeaders={false}
       columnSorting={true}
